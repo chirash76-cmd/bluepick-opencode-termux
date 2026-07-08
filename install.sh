@@ -3,6 +3,7 @@ if [ -L ~/storage/shared ]; then
 else
 	termux-setup-storage
 fi
+
 pkg install proot-distro -y
 proot-distro install ubuntu
 proot-distro login ubuntu << 'EOF'
@@ -12,6 +13,8 @@ mkdir /storage/emulated/0/Opencode
 echo "cd /storage/emulated/0/Opencode" >> ~/.bashrc
 echo "opencode" >> ~/.bashrc
 EOF
+
 echo 'alias opencode="proot-distro login ubuntu"' >> ~/.bashrc
 source ~/.bashrc
+
 echo "Close and restart termux, then type opencode to access Opencode"
